@@ -139,9 +139,11 @@
             }
         });
     }
-    function liveUpdate() {
-        setInterval(renderResults(votes, 1), 500)
-    }
+
+
+
+
+    setInterval(function () { console.log("Updating chart"); renderResults(votes, 1) }, 5000);
 
 
 
