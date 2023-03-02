@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    console.log("hello world");
+    var endpoint = "https://eu-west-2.aws.data.mongodb-api.com/app/data-koptc/endpoint/data/v1/action/findOne";
+    var data = JSON.stringify({
+        "collection": "data",
+        "database": "votes",
+        "dataSource": "vote",
+        "projection": {
+            "_id": 1
+        }
+    });
+
+    var config = {
+        method: 'post',
+        url: 'https://eu-west-2.aws.data.mongodb-api.com/app/data-koptc/endpoint/data/v1/action/findOne',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Request-Headers': '*',
+            'api-key': 'zGy4lsBGqSWf6dJDEXdO7dc14qh1fViiGNyU6ON8ejJ2mlAAmxoMTotco42hPBAc',
+        },
+        data: data
+    };
+
+    fetch(endpoint, config)
+        .then((response) => response.json())
+        .then((data) => {
+            console.log("Success:", data);
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>
