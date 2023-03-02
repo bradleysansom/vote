@@ -139,11 +139,23 @@
             }
         });
     }
+    function fetchAndRender() {
+        fetch(endpoint)
+            .then((response) => response.json())
+            .then((data) => {
+                //console.log("Success:", data);
+                votes = data.slice(0, data.findIndex(isEmpty));
+                console.log("Success, votes", votes)
+                renderResults(votes, 1);
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+    }
 
 
 
-
-    setInterval(function () { console.log("Updating chart"); renderResults(votes, 1) }, 5000);
+    setInterval(function () { console.log("Updating chart"); fetchAndRender(votes, 1) }, 5000);
 
 
 
