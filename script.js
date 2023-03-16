@@ -57,7 +57,7 @@ function sendVote(choice) {
 var barGraph;
 function renderResults(votes, question) {
     function isForQuestion(votes) {
-        return votes.question === currentQuestion;
+        return votes.question === question;
     }
     function isTrue(votes) {
         return votes.vote === true;
@@ -67,8 +67,8 @@ function renderResults(votes, question) {
     }
     var votesForQuestion = votes.filter(isForQuestion);
     console.log("votes for question", question, votesForQuestion);
-    var trueVotesForQuestion = votes.filter(isTrue);
-    var falseVotesForQuestion = votes.filter(isFalse);
+    var trueVotesForQuestion = votesForQuestion.filter(isTrue);
+    var falseVotesForQuestion = votesForQuestion.filter(isFalse);
     console.log("true votes for question", question, trueVotesForQuestion);
     console.log("false votes for question", question, falseVotesForQuestion);
 
