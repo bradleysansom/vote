@@ -17,7 +17,7 @@ function sendVote(choice) {
             var time = new Date();
             var timeNow = Date.now();
             var newt = {
-                question: 1,
+                question: 2,
                 time: timeNow,
                 vote: choice
             };
