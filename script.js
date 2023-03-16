@@ -1,5 +1,6 @@
 var endpoint = "https://votes-11360-default-rtdb.europe-west1.firebasedatabase.app/.json";
 var votes;
+var currentQuestion = 2;
 
 function isEmpty(data) {
     return data.question === 0;
@@ -17,7 +18,7 @@ function sendVote(choice) {
             var time = new Date();
             var timeNow = Date.now();
             var newt = {
-                question: 2,
+                question: currentQuestion,
                 time: timeNow,
                 vote: choice
             };
@@ -37,7 +38,7 @@ function sendVote(choice) {
                         .then((data) => {
                             votes = data.slice(0, data.findIndex(isEmpty));
                             console.log("votes", votes);
-                            renderResults(votes, 1);
+                            renderResults(votes, currentQuestion);
                         })
                         .catch((error) => {
                             console.error("Error:", error);
@@ -56,7 +57,7 @@ function sendVote(choice) {
 var barGraph;
 function renderResults(votes, question) {
     function isForQuestion(votes) {
-        return votes.question === 1;
+        return votes.question === currentQuestion;
     }
     function isTrue(votes) {
         return votes.vote === true;
@@ -109,7 +110,7 @@ function fetchAndRender() {
             //console.log("Success:", data);
             votes = data.slice(0, data.findIndex(isEmpty));
             console.log("Success, votes", votes)
-            renderResults(votes, 1);
+            renderResults(votes, currentQuestion);
         })
         .catch((error) => {
             console.error("Error:", error);
