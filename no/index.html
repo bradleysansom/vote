@@ -6,16 +6,93 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>You voted No</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        div {
+            flex-grow: 1;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            align-content: center;
+            flex-wrap: nowrap;
+            font-family: sans-serif;
+        }
+
+        div.voted {
+            background-color: #eee;
+
+        }
+
+        div.register {
+            background-color: #bbb;
+        }
+
+        span#youVoted {
+            font-size: 1.5rem;
+        }
+
+        span#choice {
+            color: red;
+            font-size: 5rem;
+            font-weight: bold;
+        }
+
+        span#local {
+            font-size: 1.5rem;
+        }
+
+        a {
+            padding: 10px;
+            color: black;
+            background-color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        span:has(a) {
+            padding-block: 12px
+        }
+
+        span#unheard {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
-    <h1 id="choice"></h1>
+    <div class="voted">
+        <span id="youVoted">You voted</span>
+        <span id="choice">NO</span>
+        <span>Check the screen to see the difference your vote has made</span>
+    </div>
+    <div class="register">
+        <span id="now">Now your vote has been heard, don't forget to vote for real</span>
+        <span id="local">Local elections are coming up on the 4th of May</span>
+        <span id="register">Make sure you're registered to vote at <a
+                href="https://gov.uk/register-to-vote">gov.uk/register-to-vote</a></span>
+        <span id="id">This year, you'll need photo ID to vote. If you don't have anything, apply on <a
+                href="https://gov.uk/apply-for-photo-id-voter-authority-certificate">gov.uk/apply-for-photo-id-voter-authority-certificate</a></span>
+        <span id="unheard">Don't let your voice go unheard</span>
+    </div>
+
 
 </body>
 <script src="../script.js"></script>
 <script>
     sendVote(false);
-    document.getElementById("choice").innerHTML = "You voted No";
 </script>
 
 
