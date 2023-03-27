@@ -83,22 +83,62 @@ function renderResults(votes, question) {
 
     barGraph = new Chart(ctx, {
         type: 'bar',
+        plugins: [ChartDataLabels],
         data: {
             labels: ['Yes', 'No'],
             datasets: [{
-                label: '# of Votes',
+                label: '',
                 data: [trueVotesForQuestion.length, falseVotesForQuestion.length],
-                borderWidth: 1
+                borderWidth: 0
             }]
         },
         options: {
             scales: {
                 y: {
-                    beginAtZero: true
+                    beginAtZero: true,
+                    ticks: {
+                        color: '#000000',
+                        font: {
+                            size: '25px',
+                            family: 'Interstate',
+                            weight: '500'
+                        }
+                    }
                 }
             },
             animation: false,
-            indexAxis: 'y'
+            indexAxis: 'y',
+            backgroundColor: '#000000',
+            label: '',
+            plugins: {
+                tooltip: {
+                    enabled: false
+                },
+                legend: {
+                    display: false
+                },
+                datalabels: {
+                    formatter: (value, ctx) => {
+                        let sum = 0;
+                        let dataArr = ctx.chart.data.datasets[0].data;
+                        dataArr.map(data => {
+                            sum += data;
+                        });
+                        let percentage = (value * 100 / sum).toFixed(2) + "%";
+                        return percentage;
+                    },
+                    color: '#ffffff',
+                    clamp: true,
+                    anchor: 'end',
+                    align: 'left',
+                    font: {
+                        size: '25px',
+                        family: 'Interstate',
+                        weight: '500'
+                    }
+                }
+            }
+
         }
     });
 }
