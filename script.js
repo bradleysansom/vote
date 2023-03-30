@@ -1,6 +1,6 @@
 var endpoint = "https://votes-11360-default-rtdb.europe-west1.firebasedatabase.app/.json";
 var votes;
-var currentQuestion = 2;
+var currentQuestion = 3;
 
 function isEmpty(data) {
     return data.question === 0;
